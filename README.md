@@ -63,7 +63,8 @@ To view the plot and output a new file:
 # The Delta parameter and the Taylor expansion:
 Delta, the interval along X to perform the finite difference calculations on has to have a minimum value of 3 so that the average gradient and difference calculations can work. The script by default will use 3 data points, and calculate the first 2 derivative terms of the Taylor series (the first term is just itself):
 
-http://mathworld.wolfram.com/images/equations/TaylorSeries/NumberedEquation1.gif
+
+![alt tag](http://mathworld.wolfram.com/images/equations/TaylorSeries/NumberedEquation1.gif)
 
 Therefore order of the series used is always *delta* - 1 .
 
