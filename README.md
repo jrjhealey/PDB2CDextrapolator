@@ -38,11 +38,17 @@ is usually sufficient.
 There are a few different funtionalities build in to the script. The script takes the following options:
 
 `-s | --spectrum` - The input file from PDB2CD (plain text format).
+
 `-b | --bibliography` - Display some salient references and exit (you cannot use this option with other options).
+
 `-f | --forecast` - The number of periods (x axis increments) to extend the data by. Default of 20 nm in 1 nm increments.
+
 `-o | --outfile` - Have the script write a separate new file for the extended spectrum. Prints to screen by default.
+
 `-v | --verbose` - Output some useful info about variable values and progress messages. Supports 2 levels of verbosity at present (-v,-vv).
+
 `-p | --plot` - Invoke `matplotlib` at the end of the script to visualise the extended spectrum. Requires `matplotlib` to be preinstalled - see above.
+
 `-d | --delta` - The span of data from which gradients are calculated, this is a default of 3 x-increments. **IMPORTANT - see the note below about usage**.
 
 A basic script invocation would be:
