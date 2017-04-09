@@ -102,7 +102,7 @@ def getSpectraValues(spectrum):
     with open(spectrum, 'r') as ifh:
         Xvals = []
         Yvals = []
-        # Skip exta info at top of file
+        # Skip extra info at top of file
         header = []
         noheader = []
 
@@ -132,7 +132,7 @@ def arrayDiff(array):
 
 
 def forecastSpectra(Xvals,Yvals, forecast, delta, verbose):
-    """Compute the gradient (average difference) of the last 5 values of each X and Y array"""
+    """Compute the gradient (average difference) of the last delta values of each X and Y array"""
     import math
 
     for a in range(forecast):
