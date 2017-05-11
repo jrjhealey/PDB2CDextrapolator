@@ -102,7 +102,7 @@ def getSpectraValues(spectrum):
     with open(spectrum, 'r') as ifh:
         Xvals = []
         Yvals = []
-        # Skip extra info at top of file
+        # Skip exta info at top of file
         header = []
         noheader = []
 
@@ -132,7 +132,7 @@ def arrayDiff(array):
 
 
 def forecastSpectra(Xvals,Yvals, forecast, delta, verbose):
-    """Compute the gradient (average difference) of the last delta values of each X and Y array"""
+    """Compute the gradient (average difference) of the last 5 values of each X and Y array"""
     import math
 
     for a in range(forecast):
@@ -161,7 +161,6 @@ def forecastSpectra(Xvals,Yvals, forecast, delta, verbose):
 
         # Average second order difference
         diffarray2 = arrayDiff(diffarray1)
-        print(diffarray2)
         if verbose > 1: print("Second order Taylor term = " + str(d2y))
 
         d2y = arrayAvg(diffarray2)/x1avg
@@ -180,7 +179,7 @@ def forecastSpectra(Xvals,Yvals, forecast, delta, verbose):
         Xvals.append(Xvals[-1] + x1avg)
 
         # For y, a finite difference partial Taylor expansion approximates the curve
-        # Maximum number of terms = number of points fitted..
+        # Maximum number of terms = number of points fitted.
 
         Yvals.append(Yvals[-1] +
                      Yvals[-1] * d1y +
@@ -189,7 +188,7 @@ def forecastSpectra(Xvals,Yvals, forecast, delta, verbose):
                      )
 
     # y (first term
-    # y x First derivative (second term)
+    # y * First derivative (second term)
     # 0.5*y^2 x Second derivative (third term)
     return Xvals, Yvals
 
@@ -235,9 +234,10 @@ def main():
 
     if outfile is not 'None':
         with open(outfile, 'w') as ofh:
-            ofh.write(header)
+            for line in header:
+		ofh.write(line)
             for c1, c2 in zip(Xvals, Yvals):
-                ofh.write(str(c1) + '\t' + str(round(c2,3)))
+                ofh.write(str(c1) + '\t' + str(round(c2,3)) + '\n')
     else:
         for line in header:
             print(line.rstrip("\n"))
